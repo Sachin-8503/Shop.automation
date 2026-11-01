@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#174a35">
+  <title>Shop orders | Naariyal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="shopkeeper.css">
+  <script src="shopkeeper.js" defer></script>
+</head>
+<body>
+  <header class="merchant-topbar">
+    <a class="brand" href="/" aria-label="Naariyal customer shop">
+      <span class="brand-mark" aria-hidden="true">N</span>
+      <span>naariyal<span class="brand-dot">.</span><small>SHOP MANAGEMENT</small></span>
+    </a>
+    <div class="topbar-right">
+      <span class="connection-state" id="connectionState"><i></i> Connecting</span>
+      <a class="store-link" href="/">View customer shop <span aria-hidden="true">&#8599;</span></a>
+      <button class="change-password-button" id="openPasswordDialog" type="button">Change password</button>
+      <button class="logout-button" id="logoutButton" type="button">Sign out</button>
+    </div>
+  </header>
+  <main class="dashboard">
+    <section class="page-heading">
+      <div>
+        <p class="eyebrow">NAARIYAL COCONUT & CO.</p>
+        <h1>Orders</h1>
+        <p class="page-subtitle">Incoming customer orders and payment status.</p>
+      </div>
+      <div class="order-count"><span id="incomingCount">0</span><small>AWAITING PAYMENT</small></div>
+    </section>
+
+    <section class="status-strip" aria-label="Order workflow">
+      <div><span class="step-number">01</span><span>Order received</span></div>
+      <span class="step-arrow" aria-hidden="true">&#8594;</span>
+      <div><span class="step-number">02</span><span>Payment checked</span></div>
+      <span class="step-arrow" aria-hidden="true">&#8594;</span>
+      <div><span class="step-number">03</span><span>Preparing</span></div>
+      <span class="step-arrow" aria-hidden="true">&#8594;</span>
+      <div><span class="step-number">04</span><span>Ready / complete</span></div>
+    </section>
+
+    <section class="orders-section" aria-labelledby="ordersTitle">
+      <div class="orders-toolbar">
+        <div><h2 id="ordersTitle">Order queue</h2><span class="live-label"><i></i> Live updates</span></div>
+        <div class="filter-buttons" role="group" aria-label="Filter orders">
+          <button type="button" class="filter-button selected" data-filter="open" aria-pressed="true">Active</button>
+          <button type="button" class="filter-button" data-filter="all" aria-pressed="false">All orders</button>
+        </div>
+      </div>
+      <div class="orders-list" id="ordersList" aria-live="polite"></div>
+      <div class="empty-orders" id="emptyOrders" hidden>
+        <span aria-hidden="true">&#9711;</span>
+        <h3>No orders here yet</h3>
+        <p>New customer orders will appear on this page.</p>
+      </div>
+    </section>
+  </main>
+  <dialog class="password-dialog" id="passwordDialog" aria-labelledby="passwordDialogTitle">
+    <form class="password-form" id="passwordForm">
+      <button class="dialog-close" id="closePasswordDialog" type="button" aria-label="Close">&#215;</button>
+      <p class="eyebrow">ACCOUNT SECURITY</p>
+      <h2 id="passwordDialogTitle">Change password</h2>
+      <p class="password-intro">Choose a new password with at least 10 characters.</p>
+      <label>Current password<input name="currentPassword" type="password" autocomplete="current-password" required></label>
+      <label>New password<input name="newPassword" type="password" autocomplete="new-password" minlength="10" maxlength="128" required></label>
+      <label>Confirm new password<input name="confirmPassword" type="password" autocomplete="new-password" minlength="10" maxlength="128" required></label>
+      <p class="password-error" id="passwordError" role="alert" hidden></p>
+      <button class="password-submit" id="passwordSubmit" type="submit">Save new password</button>
+    </form>
+  </dialog>
+  <div class="merchant-toast" id="merchantToast" role="status" aria-live="polite"></div>
+</body>
+</html>

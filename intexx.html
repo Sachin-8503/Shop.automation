@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="theme-color" content="#174a35">
+	<title>Naariyal | Coconut & Co.</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="styles.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" defer></script>
+	<script src="script.js" defer></script>
+</head>
+<body>
+	<header class="topbar">
+		<a class="brand" href="#home" aria-label="Naariyal home">
+			<span class="brand-mark" aria-hidden="true">N</span>
+			<span>naariyal<span class="brand-dot">.</span><small>COCONUT & CO.</small></span>
+		</a>
+		<nav class="main-nav" aria-label="Main navigation">
+			<a class="nav-link active" href="#shop">Shop</a>
+			<a class="nav-link" href="#story">Our story</a>
+		</nav>
+		<button class="cart-trigger" id="cartJump" type="button" aria-label="Go to your cart">
+			<span aria-hidden="true">Bag</span><span class="cart-count" id="headerCartCount">0</span>
+		</button>
+	</header>
+
+	<main id="home">
+		<section class="hero" aria-labelledby="heroTitle">
+			<div class="hero-copy">
+				<p class="eyebrow"><span class="eyebrow-line"></span> FRESH FROM THE FARM</p>
+				<h1 id="heroTitle">A little more<br><em>coconut</em> in your day.</h1>
+				<p class="hero-description">Good things grow slowly. Find fresh coconuts, pantry staples, and small-batch favourites, all in one place.</p>
+				<a class="primary-link" href="#shop">Explore the shop <span aria-hidden="true">&#8594;</span></a>
+				<div class="hero-note"><span class="note-icon" aria-hidden="true">&#10003;</span> Carefully sourced. Packed with care.</div>
+			</div>
+			<div class="hero-image-wrap">
+				<img class="hero-image" src="images/shop-hero.jpg" alt="Fresh coconuts ready to enjoy">
+				<div class="image-label"><span>GOODNESS,</span><strong>IN EVERY DROP</strong></div>
+				<div class="hero-stamp" aria-hidden="true"><span>FRESH</span><span>DAILY</span><b>100%</b></div>
+			</div>
+			<div class="hero-index" aria-hidden="true">01 <span></span> 03</div>
+		</section>
+
+		<section class="shop-section" id="shop" aria-labelledby="shopTitle">
+			<div class="section-heading">
+				<div>
+					<p class="eyebrow">THE GOOD STUFF</p>
+					<h2 id="shopTitle">Shop our favourites</h2>
+				</div>
+				<label class="search-box">
+					<span aria-hidden="true">Search</span>
+					<input id="productSearch" type="search" placeholder="Find something lovely" aria-label="Search products">
+					<span class="search-icon" aria-hidden="true">&#8981;</span>
+				</label>
+			</div>
+			<div class="shop-layout">
+				<div class="catalog-area">
+					<div class="category-row" id="categoryFilters" aria-label="Filter by category"></div>
+					<div class="product-grid" id="productGrid" aria-live="polite"></div>
+					<p class="empty-products" id="emptyProducts" hidden>No products match that search. Try another word.</p>
+				</div>
+				<aside class="cart-panel" id="cartPanel" aria-labelledby="cartTitle">
+					<div class="cart-panel-heading">
+						<div><p class="eyebrow">YOUR SELECTION</p><h3 id="cartTitle">Your bag <span id="cartItemLabel">(0)</span></h3></div>
+						<span class="bag-icon" aria-hidden="true">&#8595;</span>
+					</div>
+					<div class="cart-items" id="cartItems"></div>
+					<div class="cart-empty" id="cartEmpty">
+						<span class="empty-bag" aria-hidden="true">&#9711;</span>
+						<p>Your bag is taking a breather.</p>
+						<span>Add a favourite to get started.</span>
+					</div>
+					<div class="cart-bottom" id="cartBottom" hidden>
+						<div class="shipping-note" id="shippingNote"></div>
+						<div class="total-row"><span>Subtotal</span><strong id="subtotalValue">₹0</strong></div>
+						<div class="total-row delivery-row"><span>Pickup</span><strong id="deliveryValue">Free</strong></div>
+						<div class="grand-total"><span>Total</span><strong id="totalValue">₹0</strong></div>
+						<button class="checkout-button" id="checkoutButton" type="button">Continue to payment <span aria-hidden="true">&#8594;</span></button>
+						<p class="secure-note">UPI QR checkout <span aria-hidden="true">&#183;</span> Demo payment flow</p>
+					</div>
+				</aside>
+			</div>
+		</section>
+
+		<section class="story-band" id="story">
+			<div class="story-mark" aria-hidden="true">N.</div>
+			<div><p class="eyebrow">ROOTED IN THE EVERYDAY</p><h2>Simple ingredients.<br><em>Good feeling.</em></h2></div>
+			<p class="story-copy">From a refreshing sip to a home-cooked meal, coconut has a way of making the ordinary feel a little better. We bring the good bits closer to home.</p>
+			<a href="#shop" class="story-link">Find your favourite <span aria-hidden="true">&#8599;</span></a>
+		</section>
+	</main>
+
+	<footer class="footer"><a class="brand footer-brand" href="#home"><span class="brand-mark" aria-hidden="true">N</span><span>naariyal<span class="brand-dot">.</span><small>COCONUT & CO.</small></span></a><p>Made with care, for your everyday.</p><span>&copy; <span id="currentYear"></span> Naariyal</span></footer>
+	<div class="service-credit"><span>Website service provider</span><strong>SS Infotech</strong><span>Lucknow 226021</span><a href="tel:+917376725832">For more services: 7376725832</a></div>
+
+	<div class="modal-backdrop" id="paymentModal" hidden>
+		<section class="payment-modal" role="dialog" aria-modal="true" aria-labelledby="paymentTitle">
+			<button class="modal-close" id="closePayment" type="button" aria-label="Close payment window">&#215;</button>
+			<p class="eyebrow">ONE LAST STEP</p>
+			<h2 id="paymentTitle">Confirm your order</h2>
+			<p class="payment-intro">Choose how you want to pay. Your pickup token will be created when you place the order.</p>
+			<form class="customer-order-form" id="customerOrderForm">
+				<fieldset class="payment-method-choice">
+					<legend>Payment method</legend>
+					<label><input type="radio" name="paymentMethod" value="upi_qr" checked><span><strong>UPI QR</strong><small>Pay online with a UPI app</small></span></label>
+					<label><input type="radio" name="paymentMethod" value="pay_at_shop"><span><strong>Pay at shop</strong><small>Pay when collecting your order</small></span></label>
+				</fieldset>
+				<p class="order-form-error" id="orderFormError" role="alert" hidden></p>
+				<button class="checkout-button order-submit" id="createOrderButton" type="submit">Place order &amp; get token <span aria-hidden="true">&#8594;</span></button>
+			</form>
+			<div class="payment-stage" id="paymentStage" hidden>
+				<h2 id="paymentStageTitle">Pay with UPI</h2>
+				<p class="order-token" id="orderReference"></p>
+				<p class="payment-intro" id="paymentInstructions"></p>
+				<div class="payment-amount" id="paymentAmount">₹0</div>
+				<div class="qr-frame" id="paymentQrFrame"><div id="paymentQr" aria-label="UPI payment QR code"></div></div>
+				<p class="upi-id" id="paymentUpiLabel"></p>
+				<a class="upi-link" id="upiAppLink" href="#">Open UPI app <span aria-hidden="true">&#8599;</span></a>
+				<p class="demo-disclaimer" id="paymentMethodNote"></p>
+				<button class="modal-done" id="finishPayment" type="button">Close</button>
+			</div>
+		</section>
+	</div>
+	<div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
